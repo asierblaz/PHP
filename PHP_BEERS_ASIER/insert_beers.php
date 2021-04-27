@@ -29,9 +29,9 @@ if(!isset($_SESSION["tipouser"])||$_SESSION["tipouser"]== null){
 		<h1>Insert Beers:</h1>
 <form id="insert" name="insert" method="POST" enctype="multipart/form-data" action="insert_beers.php">
 		<table>
-			<tr>
+<!--			<tr>
 				<td>ID:</td>   <td><input name="id" type="number"><br></td>
-			</tr>
+			</tr> -->
 			<tr>
 				<td>Izena:</td>   <td><input name="name" type="text"><br></td>
 			</tr>
@@ -67,7 +67,7 @@ if(!isset($_SESSION["tipouser"])||$_SESSION["tipouser"]== null){
 <?php
 
     if (isset($_POST['name'])){
-        $id = $_POST["id"];
+        //$id = $_POST["id"];
         $name= $_POST["name"];
         $brewerie= $_POST["brewerie"];        
       $dir="img";
@@ -78,11 +78,11 @@ if(!isset($_SESSION["tipouser"])||$_SESSION["tipouser"]== null){
 
 			if($dir=="img/"){
 
-        		$sql="INSERT INTO beer VALUES ('$id','$name','img/nofoto.png','$brewerie')";
+        		$sql="INSERT INTO beer VALUES ('','$name','img/nofoto.png','$brewerie')";
 
 			} else{
 
-        		$sql="INSERT INTO beer VALUES ('$id','$name','$dir','$brewerie')";
+        		$sql="INSERT INTO beer VALUES ('','$name','$dir','$brewerie')";
 
         	}
 			 $ejecutar=mysqli_query($conexion, $sql);
