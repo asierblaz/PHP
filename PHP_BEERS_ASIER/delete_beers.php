@@ -1,12 +1,13 @@
-<?php
+<?php 
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
-if( $_SESSION["tipouser"]== null || $_SESSION["tipouser"]!="admin"){
-	echo "<html> <h1>Bakarrik administrariak kargatu ahal dute horri hau.<h1><html>";
+if(!isset($_SESSION["tipouser"])||$_SESSION["tipouser"]!= "admin"){
+	echo "<html> <h1>Bakarrik administrariak kargatu ahal dute hau.<h1><html>";
 	die();
 }
  ?>
+
 
 <html>
     <body style='margin:auto;width:600px;margin-top:100px;' onload="ObtenerDatos()">
@@ -28,7 +29,7 @@ if( $_SESSION["tipouser"]== null || $_SESSION["tipouser"]!="admin"){
 		<h1>Delete Beers:</h1>
 		<table>
 			<tr>
-				<td>Ezabatu nahi duzun id-a:</td><td><input name="id" id="id" type="text"><br></td>
+				<td>Ezabatu nahi duzun id-a:</td><td><input name="id" id="id" type="number"><br></td>
 			</tr>
 			<td><input name="ezabatu" type="button" value="Ezabatu" onclick="Ezabatu()"></td>
 			</tr>
@@ -39,7 +40,7 @@ if( $_SESSION["tipouser"]== null || $_SESSION["tipouser"]!="admin"){
 
 
 </div>
-
+<br><br><br>
 
 </html>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>

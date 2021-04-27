@@ -1,13 +1,13 @@
-<?php
+<?php 
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
-
-if( $_SESSION["tipouser"]== null){
+if(!isset($_SESSION["tipouser"])||$_SESSION["tipouser"]== null){
 	echo "<html> <h1>Ez daukazu baimena web hau kargatzeko.<h1><html>";
 	die();
 }
  ?>
+
 
 <html>
 	<head>
@@ -35,6 +35,7 @@ if( $_SESSION["tipouser"]== null){
 						<td><a href="select_beers.php">select_Beers </a>|</td>
 						<td><a href="insert_beers.php">insert beers </a>|</td>
 						<td><a href="delete_beers.php">delete beers</a></td>
+						<td><a href="delete2.php">delete 2</a></td>
 					</tr>
 					
 				</table>

@@ -2,11 +2,12 @@
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
-if( $_SESSION["tipouser"]== null){
+if(!isset($_SESSION["tipouser"])||$_SESSION["tipouser"]== null){
 	echo "<html> <h1>Ez daukazu baimena web hau kargatzeko.<h1><html>";
 	die();
 }
  ?>
+
 
 <!DOCTYPE html>
 <html>
@@ -63,6 +64,12 @@ function ObtenerDatos(){
 		
 	
 		}
+
+$("#logout").click(function() {
+		alert("Hurrengorarte");
+		$(location).attr('href', 'logout.php');
+	});
+	
 
 </script>
 

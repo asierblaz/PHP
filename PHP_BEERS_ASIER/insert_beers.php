@@ -2,7 +2,7 @@
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
-if( $_SESSION["tipouser"]== null){
+if(!isset($_SESSION["tipouser"])||$_SESSION["tipouser"]== null){
 	echo "<html> <h1>Ez daukazu baimena web hau kargatzeko.<h1><html>";
 	die();
 }
@@ -30,13 +30,29 @@ if( $_SESSION["tipouser"]== null){
 <form id="insert" name="insert" method="POST" enctype="multipart/form-data" action="insert_beers.php">
 		<table>
 			<tr>
-				<td>id:</td>   <td><input name="id" type="text"><br></td>
+				<td>ID:</td>   <td><input name="id" type="number"><br></td>
 			</tr>
 			<tr>
 				<td>Izena:</td>   <td><input name="name" type="text"><br></td>
 			</tr>
 			<tr>
-				<td>Brewerie:</td><td><input name="brewerie" type="text" ><br></td>
+				<td>Brewerie:</td><td>
+					
+				<?php
+				include ("conexion.php");
+				$conexion=connectDataBase();
+				$resultado= mysqli_query($conexion,"SELECT * FROM brewery ");
+				?>
+				<select id="brewerie"  name="brewerie">
+ 				<?php
+					while($imprimir=mysqli_fetch_array($resultado)){ 
+						?>
+   					 <option value="<?php echo $imprimir['id'] ?>"><?php echo $imprimir['nameb'] ?></option>
+   					<?php 
+   					}
+   					 ?>
+					</select>
+				</td>
 			</tr>
 			</table>
 			Argazkia: <input id="imagen" type="file" name="imagen" onchange="mostrarImagen()"><br> <br>
@@ -49,8 +65,7 @@ if( $_SESSION["tipouser"]== null){
 </html>
 
 <?php
-include ("conexion.php");
-	  $conexion=connectDataBase();
+
     if (isset($_POST['name'])){
         $id = $_POST["id"];
         $name= $_POST["name"];
@@ -131,4 +146,11 @@ function mostrarImagen(){
 
 	 	};	 }
 } 
+
+
+$("#logout").click(function() {
+		alert("Hurrengorarte");
+		$(location).attr('href', 'logout.php');
+	});
+	
   </script>
