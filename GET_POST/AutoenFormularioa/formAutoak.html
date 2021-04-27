@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Autoen Formularioa</title>
+	    <link rel="stylesheet" href="css/bootstrap.min.css">
+
+</head>
+<body>
+
+
+
+<div class="container">
+	
+  <h6 class="display-4">Datos del vehiculo</h6>
+  <br>
+
+<form action="prueba.php" method="POST">
+	<div class="form-group"> 
+	<label>Escribe tu nombre: <input type="text" name="nombre" ></label><br>
+	<label>Escribe tu clave: <input type="password" name="pass" ></label><br>
+	<br><br>
+
+	<label>Elige tu color de coche favorito: </label><br>
+	<label><input type="radio" id="rojo" name="color" value="Rojo"> Rojo</label><br>
+	<label><input type="radio" id="verde" name="color" checked  value="Verde"> Verde</label><br>
+	<label><input type="radio" id="azul" name="color" value="Azul"> Azul</label><br>
+
+
+
+	<label>Elige los extras: </label><br>
+	<label><input type="checkbox" id="extra1" name="extra1" checked value="Aire Acondicionado"> Aire Acondicionado</label><br>
+	<label><input type="checkbox" id="extra2" name="extra2" value="Tapiceria de piel"> Tapiceria de piel</label><br>
+	<label><input type="checkbox" id="extra3" name="extra3" value="Llantas de aluminio"> Llantas de aluminio</label><br><br>
+
+	<label>Cual es el precio maximo que estarias dispuesto a pagar?: </label>
+<select name="precio" id="precio">
+  <option value="8.001 - 10.000 euros">8.001 - 10.000 euros</option>
+  <option value="12.001 - 14.000 euros">12.001 - 14.000 euros</option>
+  <option value="17.001 - 20.000 euros">17.001 - 20.000 euros</option>
+</select>
+
+<br><br><br>
+
+	<label>Escribe aqui cualquier otro comentario: </label><br>
+	<textarea name="comentarios"></textarea>
+
+	<br><br>
+
+ 	<input type="submit" id="enviar" value="Enviar">
+ 	 <input type="reset" id="borrar" value="Borrar">	
+
+
+</div>
+</div>
+</form>
+</body>
+</html>
