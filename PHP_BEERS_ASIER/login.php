@@ -22,6 +22,7 @@
 	Pasahitza*: &nbsp;<input type="password" name="password" id="password"required placeholder="Sartu zure pasahitza"><br>
 	<br>
 	<label id="et">¿Ez daukazu kontua? </label><a href="registro.php">  Erregistratu zaitez</a><br>
+	<label id="recuperarcontra">¿Pasahitza ahaztu duzu? </label><a href="registro.php"> Errekuperatu </a><br>
 	
 	<br>
 	
@@ -43,22 +44,22 @@ if (isset($_POST['username'])){
 
 	$username= $_POST['username'];
 	$passwordingresado=$_POST['password'];
-$consulta= "SELECT * FROM users WHERE username='$username' and password='$passwordingresado'";
-			
+//$consulta= "SELECT * FROM users WHERE username='$username' and password='$passwordingresado'";
+	$consulta= "SELECT * FROM users WHERE username='$username'";
+		
 
 $resultado=mysqli_query($conexion,$consulta);
 
 
 
-$fila= mysqli_num_rows($resultado);
+$imprimir= mysqli_fetch_array($resultado);
 
-if($fila>0){
+if(password_verify($passwordingresado,$imprimir['password'])==true){
 	
 	session_start();
-	while($imprimir=mysqli_fetch_array($resultado)){
  	$rol = $imprimir['rol'];
  	$foto= $imprimir['imagen'];
-	}
+	
 
 		$_SESSION["username"]= $username;
 		$_SESSION["tipouser"]= $rol;

@@ -15,6 +15,7 @@
 	Username*: &nbsp;<input type="text" name="username" id="username" class="entrada"  required placeholder="Zure erabiltzailea sartu" ><br>
 	Pasahitza*: &nbsp;<input type="password" name="password" id="password"required placeholder="Sartu zure pasahitza"><br>
 	Pasahitza*: &nbsp;<input type="password" name="passwordrep" id="passwordrep"required placeholder="Errepikatu pasahitza"><br>
+	Email*: &nbsp;<input type="email" name="email" id="email"required placeholder="Sartu zure email-a"><br>
 	Erabiltzaile Argazkia: &nbsp;&nbsp; <input id="imagen" type="file" name="imagen" onchange="mostrarImagen()"><br> <br>
 	<center><img id="argazki" name="imagen"width="200"></center> <br><br><br>
 
@@ -42,14 +43,17 @@ include ("conexion.php");
 		$archivo= $_FILES['imagen']['tmp_name'];
 		$dir=$dir."/".$imagen;
 		move_uploaded_file($archivo, $dir);
+		$email=$_POST['email'];
+
+$passwordEncriptada= password_hash($password, PASSWORD_DEFAULT);
 
 			if($dir=="img/"){
 
-        		$sql="INSERT INTO users VALUES ('$username','$password','usuario','fotoperfil')";
+        		$sql="INSERT INTO users VALUES ('$username','$passwordEncriptada','usuario','img/fotoperfil.png','$email')";
 
 			} else{
 
-        		$sql="INSERT INTO users VALUES ('$username','$password','usuario','$dir')";
+        		$sql="INSERT INTO users VALUES ('$username','$passwordEncriptada','usuario','$dir','$email')";
 
         	}
 			 $ejecutar=mysqli_query($conexion, $sql);
@@ -62,10 +66,6 @@ include ("conexion.php");
 		}
 	}
   ?>
-
-
-
-
 		
     </body>
 

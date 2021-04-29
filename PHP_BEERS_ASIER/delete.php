@@ -23,7 +23,7 @@ $ejecutar= mysqli_query($conexion,$sql);
 		}else{ 
 
 			if($dir!="img/nofoto.png"){
-			unlink($dir); //borra la foto de la carpeta
+		//	unlink($dir); //borra la foto de la carpeta
 
 			}
 		 	echo"Datuak Ondo ezabatu dira <br><a href='index2.php'>Atzera Itzuli </a>";
