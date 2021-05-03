@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.0
+-- version 5.0.4
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 28-04-2021 a las 10:34:15
--- Versión del servidor: 10.4.18-MariaDB
--- Versión de PHP: 7.3.27
+-- Tiempo de generación: 03-05-2021 a las 11:17:54
+-- Versión del servidor: 10.4.17-MariaDB
+-- Versión de PHP: 8.0.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -30,7 +30,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `beer` (
   `id` int(11) NOT NULL,
   `name` varchar(1000) NOT NULL,
-  `picture` varchar(500) DEFAULT NULL,
+  `picture` varchar(500) DEFAULT 'img/nofoto.png',
   `breweryid` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -39,10 +39,9 @@ CREATE TABLE `beer` (
 --
 
 INSERT INTO `beer` (`id`, `name`, `picture`, `breweryid`) VALUES
-(1, 'Estrella Galicia', 'img/estrella.png', 1),
-(2, 'Amstel', 'img/nofoto.png', 2),
-(4, 'Steinburg', 'img/bote-de-camuflaje---lata-de-ocultaci_n-imitaci_n-cerveza-_steinburg_.png', 3),
-(5, 'Mahoo', 'img/1956003194[1].jpg', 1);
+(8, 'Heineken', 'img/beers.png', 1),
+(11, 'Heineken', 'img/nofoto.png', 1),
+(13, 'dgg', 'img/papelera.png', 1);
 
 -- --------------------------------------------------------
 
@@ -61,9 +60,8 @@ CREATE TABLE `brewery` (
 --
 
 INSERT INTO `brewery` (`id`, `nameb`, `countryId`) VALUES
-(1, 'Amsterdam', '22'),
-(2, 'Madrid', '33'),
-(3, 'Polonia', '122');
+(1, 'Amsterdam', 'Holanda'),
+(2, 'Madrid', 'Espainia');
 
 -- --------------------------------------------------------
 
@@ -72,19 +70,20 @@ INSERT INTO `brewery` (`id`, `nameb`, `countryId`) VALUES
 --
 
 CREATE TABLE `users` (
-  `username` varchar(200) COLLATE utf32_spanish_ci NOT NULL,
-  `password` varchar(2000) COLLATE utf32_spanish_ci NOT NULL,
-  `rol` varchar(2000) COLLATE utf32_spanish_ci NOT NULL,
-  `imagen` varchar(2000) COLLATE utf32_spanish_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf32 COLLATE=utf32_spanish_ci;
+  `username` varchar(200) COLLATE utf8_spanish_ci NOT NULL,
+  `password` varchar(200) COLLATE utf8_spanish_ci NOT NULL,
+  `rol` varchar(200) COLLATE utf8_spanish_ci NOT NULL,
+  `imagen` varchar(2000) COLLATE utf8_spanish_ci NOT NULL,
+  `email` varchar(2000) COLLATE utf8_spanish_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `users`
 --
 
-INSERT INTO `users` (`username`, `password`, `rol`, `imagen`) VALUES
-('asier', 'asier', 'user', 'img/fotoperfil.png'),
-('admin', 'admin', 'admin', 'img/admin.jpg');
+INSERT INTO `users` (`username`, `password`, `rol`, `imagen`, `email`) VALUES
+('admin', '$2y$10$IXL.ajOvkWFLdPMK8TQSLuan26vs0kFVMqzCjlIUzAk6vEFW2SWIy', 'admin', 'img/SeÃ±orX.jpg', 'admin@admin.es'),
+('raul', '$2y$10$OSPWP6LKAHWkl1Xa1flawurDwQOdcCVsU55XWreEf9WfsfRKai1zS', 'usuario', 'img/EMAIL.jpg', 'raul@raul.com');
 
 --
 -- Índices para tablas volcadas
@@ -104,6 +103,12 @@ ALTER TABLE `brewery`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indices de la tabla `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`username`);
+
+--
 -- AUTO_INCREMENT de las tablas volcadas
 --
 
@@ -111,7 +116,7 @@ ALTER TABLE `brewery`
 -- AUTO_INCREMENT de la tabla `beer`
 --
 ALTER TABLE `beer`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- Restricciones para tablas volcadas

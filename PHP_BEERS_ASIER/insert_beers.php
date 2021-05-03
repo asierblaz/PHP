@@ -21,8 +21,7 @@ if(!isset($_SESSION["tipouser"])||$_SESSION["tipouser"]== null){
 
     	</div>
 
-        <div id="taula">
-
+        <div id="taula">        	
 	
         </div>
         
@@ -65,7 +64,6 @@ if(!isset($_SESSION["tipouser"])||$_SESSION["tipouser"]== null){
 </html>
 
 <?php
-
     if (isset($_POST['name'])){
         //$id = $_POST["id"];
         $name= $_POST["name"];

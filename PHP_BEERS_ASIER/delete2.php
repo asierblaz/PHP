@@ -58,7 +58,7 @@ $resultado= mysqli_query($conexion,$sql);
 	<td name="name"><br>&nbsp;&nbsp;<?php echo $imprimir['name'] ?>&nbsp;&nbsp;<br></td>
 	<td>&nbsp;&nbsp;<?php echo $imprimir['nameb'] ?>&nbsp;&nbsp;</td>
 	<td>&nbsp;&nbsp;<?php echo "<img  width=100px src=".$dir.">"?>&nbsp;&nbsp;</td>
-    <td>&nbsp;&nbsp;<a href="delete.php?id=<?php echo $imprimir['0']; ?>"><img  width=50px src="img/papelera.png"></a></td>
+    <td>&nbsp;&nbsp;<a href="delete.php?id=<?php echo $imprimir['id']; ?>"><img  width=50px src="img/papelera.png"></a></td>
 
 </tr>
 

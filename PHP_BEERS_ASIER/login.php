@@ -50,6 +50,7 @@ if (isset($_POST['username'])){
 
 $resultado=mysqli_query($conexion,$consulta);
 
+error_reporting(0); //analizar
 
 
 $imprimir= mysqli_fetch_array($resultado);
